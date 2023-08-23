@@ -26,3 +26,11 @@ if __name__ == "__main__":
     PROJECT_NAME = 'fastapiMyToolWeb'
 
     generate_uvicorn_script(UVICORN_OUTPUT_PATH, PROJECT_PATH, PROJECT_NAME)
+
+#
+#[pyapp: /home/pyapp/workspace/pyapi_env>cat lxy_download.sh
+#pip3 download -d your_offline_packages -r requirements.txt --trusted-host mirrors.aliyun.com
+#
+#
+#[pyapp: /home/pyapp/workspace/pyapi_env>cat lxy_install.sh
+#pip install --no-index --find-links=./your_offline_packages/ -r requirements.txt
