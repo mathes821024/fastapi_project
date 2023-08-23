@@ -1,0 +1,109 @@
+在GitHub上创建一个新的仓库:
+github创建完项目:
+https://github.com/mathes821024/fastapi_project.git
+
+or create a new repository on the command line
+echo "# fastapi_project" >> README.md
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/mathes821024/fastapi_project.git
+git push -u origin main
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/mathes821024/fastapi_project.git
+git branch -M main
+git push -u origin main
+
+
+conda create -n env_Fastapi python==3.8.12
+mkdir fastapi_project
+
+fastapi_project/
+│
+├── app/                         # 主应用目录
+│   ├── api/                     # API路由和端点
+│   │   ├── endpoints/           # 各个API端点
+│   │   │   ├── notification.py  # 与Java管理平台通信的API
+│   │   │   └── report.py        # 生成报表并发送到文件服务器的API
+│   │   └── api.py               # 聚合所有API路由
+│   │
+│   ├── core/                    # 核心组件（如配置管理）
+│   │   └── config.py            # 项目配置文件
+│   │
+│   ├── services/                # 各种服务类
+│   │   ├── zeromq_service.py    # 与核心C服务进行ZeroMQ通信的服务
+│   │   ├── ftp_service.py       # FTP服务
+│   │   ├── oracle_service.py    # Oracle数据库服务
+│   │   └── excel_service.py     # Excel文件生成服务
+│   │
+│   ├── models/                  # 数据模型和schemas
+│   │   ├── oracle_models.py     # Oracle数据模型
+│   │   └── api_models.py        # API请求/响应数据模型
+│   │
+│   ├── main.py                  # FastAPI应用的主入口
+│   └── ...
+│
+├── tests/                       # 测试目录
+│   ├── test_api.py
+│   ├── test_services.py
+│   └── ...
+│
+├── requirements.txt             # 项目依赖
+└── README.md
+
+以下是如何根据上述结构进行开发：
+
+app/main.py: 在这里，您会初始化FastAPI应用并包含所有的API路由。
+app/api/api.py: 在这里，您会聚合所有API路由。
+app/api/endpoints/: 每个文件代表一个API的子路由。例如，notification.py可以处理与Java管理平台相关的所有API请求。
+app/core/config.py: 定义所有的配置变量，如数据库URI、FTP服务器信息等。
+app/services/: 这里存放所有的服务类。例如，zeromq_service.py可以包含与核心C服务通信的相关方法。
+app/models/: 定义所有的数据模型。oracle_models.py可以定义与Oracle数据库表相对应的Pydantic模型，而api_models.py可以定义API请求和响应的模型。
+tests/: 包含所有的单元测试和集成测试。
+
+
+FastAPI 项目
+本项目主要包含两个组件：
+
+FastAPI 推送服务：该服务通过ZeroMQ监听核心C服务的消息，并通过HTTP/HTTPS通知Java管理平台。
+FastAPI 对账文件推送服务：该服务监听来自核心C服务通过ZeroMQ发送的消息，根据收到的消息查询Oracle 11g数据库，生成Excel报告，并通过FTP将其发送到内部文件服务器。
+目录
+前置条件
+安装
+使用方法
+测试
+参与贡献
+许可证
+前置条件
+Python 3.8.12 或更高版本
+Oracle 11g客户端（如果需要连接到Oracle数据库）
+ZeroMQ配置（用于与核心C服务通信）
+
+安装
+克隆仓库：
+git clone <仓库地址>
+cd fastapi_project
+
+创建虚拟环境并激活：
+python -m venv venv
+source venv/bin/activate  # 在Windows上使用：venv\Scripts\activate
+
+安装依赖项：
+pip install -r requirements.txt
+
+根据需要配置环境变量或更新app/core/config.py。
+使用方法
+运行FastAPI应用程序：
+uvicorn app.main:app --reload
+测试
+关于如何运行测试套件的详细信息。
+
+参与贡献
+参与本项目贡献的步骤或指南。
+
+许可证
+关于项目许可证的信息。
+

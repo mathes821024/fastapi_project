@@ -1,0 +1,9 @@
+fastapi[all]
+uvicorn
+cx_Oracle
+sqlalchemy
+pandas
+openpyxl
+aioftp
+pyzmq
+loguru
