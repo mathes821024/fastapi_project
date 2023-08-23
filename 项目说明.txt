@@ -2,14 +2,89 @@
 github创建完项目:
 https://github.com/mathes821024/fastapi_project.git
 
+初始化仓库: 使用git init初始化一个新的Git仓库。
+添加文件: 使用git add .将当前目录下的所有文件和文件夹添加到Git跟踪中。
+提交: 使用git commit -m "first commit"进行第一次提交。
+查看分支: git branch会列出所有的本地分支。默认情况下，新的Git仓库会有一个名为master的分支。
+重命名分支: 使用git branch -M main将master分支重命名为main。注意，从2020年10月1日起，GitHub创建的新仓库默认分支名称从master更改为main，但本地Git初始化的仓库默认分支名称仍然是master。
+添加远程仓库: 使用git remote add origin https://github.com/mathes821024/fastapi_project.git将GitHub仓库添加为远程仓库。
+推送: 使用git push -u origin main将本地的main分支推送到远程仓库。
+这些步骤应该可以成功地将您的本地仓库推送到GitHub。如果您在执行这些步骤时遇到任何问题，请告诉我，我会帮助您解决。
+
+
+
 or create a new repository on the command line
 echo "# fastapi_project" >> README.md
 git init
 git add .
 git commit -m "first commit"
+git branch
 git branch -M main
 git remote add origin https://github.com/mathes821024/fastapi_project.git
 git push -u origin main
+
+您遇到的 "Recv failure: Connection was reset" 错误可能是由于多种原因引起的。以下是一些建议的解决方法
+移除现有的远程连接:
+git remote remove origin
+重新添加远程连接:
+git remote add origin git@github.com:mathes821024/fastapi_project.git
+尝试再次推送:
+git push -u origin main
+
+Administrator@MS-HVVDSSNLSPHW MINGW64 /e/git_src/python-project/fastapi_project (main)
+$ git remote remove origin
+
+Administrator@MS-HVVDSSNLSPHW MINGW64 /e/git_src/python-project/fastapi_project (main)
+$ git remote add origin git@github.com:mathes821024/fastapi_project.git
+
+Administrator@MS-HVVDSSNLSPHW MINGW64 /e/git_src/python-project/fastapi_project (main)
+$ git push -u origin main
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+解决公钥错误问题:
+$ git push -u origin main
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+
+检查现有的 SSH 密钥:
+ls ~/.ssh
+生成 SSH 密钥 (仅在没有现有密钥时执行)
+ssh-keygen -t rsa -b 4096 -C "mathes821024@gmail.com"
+
+使用鼠标选择并复制公钥。
+
+在 GitHub 上添加您的公钥:
+
+打开 GitHub 并登录。
+点击右上角的头像，选择 "Settings"。
+在左侧选择 "SSH and GPG keys"。
+点击 "New SSH key"，粘贴您的公钥，然后保存。
+测试您的 SSH 连接:
+
+
+
+关于您的问题：您只需要为每台机器的每个 GitHub 账户添加一次 SSH 公钥。一旦您的 SSH 公钥被添加到 GitHub 账户，您就可以使用该密钥从该机器访问任何您有权限的 GitHub 仓库，无需为每个项目重复此操作。
+
+简而言之：
+
+如果您在同一台机器上使用相同的 GitHub 账户，您只需要添加一次 SSH 公钥。
+如果您在不同的机器上使用相同的 GitHub 账户，您需要为每台机器添加 SSH 公钥。
+如果您在同一台机器上使用不同的 GitHub 账户，通常建议为每个账户生成不同的 SSH 密钥对，并在 ~/.ssh/config 文件中进行适当的配置。
+但在大多数常见的使用情况下，对于同一台机器和同一个 GitHub 账户，您只需要设置一次 SSH 密钥。
+
+
+
+
+
+
 
 
 …or push an existing repository from the command line
