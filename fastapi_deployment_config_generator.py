@@ -66,7 +66,7 @@ if __name__ == "__main__":
     GUNICORN_OUTPUT_PATH = 'gunicorn_start.sh'
     NGINX_OUTPUT_PATH = 'nginx_gunicorn.conf'
     PROJECT_PATH = '/home/pyapp/workspace/env_FastAPI'
-    PROJECT_NAME = 'fastapiMyToolWeb'
+    PROJECT_NAME = 'fastapi_project'
 
     generate_gunicorn_script(GUNICORN_OUTPUT_PATH, PROJECT_PATH, PROJECT_NAME)
     generate_nginx_conf(NGINX_OUTPUT_PATH, PROJECT_PATH, PROJECT_NAME)
