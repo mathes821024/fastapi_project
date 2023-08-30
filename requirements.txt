@@ -1,5 +1,5 @@
 fastapi[all]
-uvicorn
+uvicorn[standard]
 cx_Oracle
 sqlalchemy
 pandas
@@ -8,3 +8,4 @@ aioftp
 pyzmq
 loguru
 chardet
+gunicorn
